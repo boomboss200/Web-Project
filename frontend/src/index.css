@@ -133,9 +133,7 @@ button.thumbnail {
   padding: 0;
 }
 
-
-
-  .slider-container {
+.slider-container {
     width: 100%;
     height: 100%;
     top:0px; /* set top and left 0 */
@@ -150,4 +148,46 @@ button.thumbnail {
 }
 .carousel-style {
     height: 100% !important;
+}
+
+.image-outerwrapper {
+  overflow: hidden;
+  margin-top: 3%;
+  position: relative;
+}
+.img-wrapper {
+  padding-left: 50px;
+  padding-right: 30px;
+  height: 90%;
+  object-fit: cover ;
+}
+
+img.hover-zoom {
+  transition: all 0.3s ease 0s;
+  width: 90%;
+  border: 1px dashed black;
+}
+img.hover-zoom:hover {
+  transform: scale(1.25);
+}
+
+.image-header {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  margin: auto;
+  font-weight: bold;
+}
+
+.heading-title-home {
+  color: #404040;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 20px;
 }
