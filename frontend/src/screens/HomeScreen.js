@@ -9,9 +9,13 @@ import MessageBox from "../components/MessageBox";
 import A from "../Assets/A.jpeg"
 import B from "../Assets/B.jpeg"
 import C from "../Assets/C.jpeg"
+import clinic from "../Assets/clinic.jpeg"
+import lab from "../Assets/lab.jpeg"
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import '../index.css';  // change this to the file path of your overrides
+import ImageHoverZoom from "../components/ImageHoverZoom";
 // import HoverMenuButton from "../components/HoverMenuButton";
 // import "@reach/menu-button/styles.css";
 // import "@reach/combobox/styles.css";
@@ -65,7 +69,7 @@ function HomeScreen() {
     </div> */}
 
 
-            <div className="slider-container">
+            <div className="slider-container" style={{width: '100%', height: '100%'}}>
         <Carousel autoPlay interval="2000" infiniteLoop className="carousel-style" showArrows={true} showThumbs={false} showStatus={false}>
           <div className="slider-item-div">
              <img src={A}/>  
@@ -79,7 +83,24 @@ function HomeScreen() {
         </Carousel>
       </div>
 
-  
+      <div class="d-flex flex-nowrap"> 
+        <ImageHoverZoom imagePath={clinic}/>
+        <ImageHoverZoom imagePath={lab}/>
+        <ImageHoverZoom imagePath={clinic}/>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+        <h1 className="heading-title-home">NEW ARRIVALS</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+   
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:20}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+        <h1 className="heading-title-home">FIND LATEST ACCESSORIES FOR YOUR PET</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+
       <h1>Featured Products</h1>
       <div className="products">
         {loading ? (
