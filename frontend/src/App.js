@@ -39,6 +39,8 @@ import N_bar from './components/Navbar';
 import './App.css';
 import ShowCase from './components/ShowCase';
 import FilterScreen from './screens/FilterScreen';
+import Footer from './components/Footer';
+
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { fullBox, cart, userInfo } = state;
@@ -277,9 +279,7 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
-        </footer>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

@@ -15,6 +15,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import '../index.css';  // change this to the file path of your overrides
 import ImageHoverZoom from "../components/ImageHoverZoom";
+import './HScroll.css'
 // import HoverMenuButton from "../components/HoverMenuButton";
 // import "@reach/menu-button/styles.css";
 // import "@reach/combobox/styles.css";
@@ -100,8 +101,34 @@ function HomeScreen() {
         <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
       </div>
 
-      <h1>Featured Products</h1>
-      <div className="products">
+     
+
+   
+      {loading? (
+        <LoadingBox/>
+      ): error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ):(
+
+        <div className="hello" >
+              {products.map((product) => (
+                
+              <div className="short" key={product.slug}>
+                {/* <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3"> */}
+                <Product product={product}></Product> 
+                {/* </Col> */}
+                </div>
+              
+              ))}
+            
+      </div>
+      )}
+    
+
+    {/* old products section */}
+    
+    {/* <h1>Featured Products</h1> */}
+      {/* <div className="products">
         {loading ? (
           <LoadingBox />
         ) : error ? (
@@ -115,7 +142,8 @@ function HomeScreen() {
             ))}
           </Row>
         )}
-      </div>
+      </div> */}
+      
     </div>
   );
 }
