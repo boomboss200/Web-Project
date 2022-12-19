@@ -9,9 +9,19 @@ import MessageBox from "../components/MessageBox";
 import A from "../Assets/A.jpeg"
 import B from "../Assets/B.jpeg"
 import C from "../Assets/C.jpeg"
+import clinic from "../Assets/clinic.jpeg"
+import lab from "../Assets/lab.jpeg"
+import health from "../Assets/health.jpg"
+import vaccination from "../Assets/13.png"
+import surgery from "../Assets/21.png"
+import travel from "../Assets/1.png"
+import Reviews from "../components/Reviews";
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import '../index.css';  // change this to the file path of your overrides
+import ImageHoverZoom from "../components/ImageHoverZoom";
+import './HScroll.css'
+import Blog from '../components/Blog'
 // import HoverMenuButton from "../components/HoverMenuButton";
 // import "@reach/menu-button/styles.css";
 // import "@reach/combobox/styles.css";
@@ -65,7 +75,7 @@ function HomeScreen() {
     </div> */}
 
 
-            <div className="slider-container">
+            <div className="slider-container" style={{width: '100%', height: '100%'}}>
         <Carousel autoPlay interval="2000" infiniteLoop className="carousel-style" showArrows={true} showThumbs={false} showStatus={false}>
           <div className="slider-item-div">
              <img src={A}/>  
@@ -79,9 +89,143 @@ function HomeScreen() {
         </Carousel>
       </div>
 
-  
-      <h1>Featured Products</h1>
-      <div className="products">
+      <div class="d-flex flex-nowrap"> 
+        <ImageHoverZoom imagePath={clinic}/>
+        <ImageHoverZoom imagePath={lab}/>
+        <ImageHoverZoom imagePath={clinic}/>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">NEW ARRIVALS</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+   
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:20}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">FIND LATEST ACCESSORIES FOR YOUR PET</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+
+     
+
+   
+      {loading? (
+        <LoadingBox/>
+      ): error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ):(
+
+        <div className="hello" >
+              {products.map((product) => (
+                
+              <div className="short" key={product.slug}>
+                {/* <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3"> */}
+                <Product product={product}></Product> 
+                {/* </Col> */}
+                </div>
+              
+              ))}
+            
+      </div>
+      )}
+    
+    <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">BEST SELLING PRODUCTS</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+
+      {loading? (
+        <LoadingBox/>
+      ): error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+      ):(
+
+        <div className="hello" >
+              {products.map((product) => (
+                
+              <div className="short" key={product.slug}>
+                {/* <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3"> */}
+                <Product product={product}></Product> 
+                {/* </Col> */}
+                </div>
+              
+              ))}
+            
+      </div>
+      )}
+
+
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">WEEKLY DEALS</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+   
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:20}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">OUR CLINIC SERVICES</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+
+     
+      {/* <div class="d-flex justify-content-center">
+        <div>
+        <img class="clinicImage" src={require('../Assets/A.jpeg')}/>
+            <h1> Pet Health Checkup</h1>
+        </div>
+
+        <img class="clinicImage" src={require('../Assets/B.jpeg')}/>
+        <img class="clinicImage" src={require('../Assets/B.jpeg')}/>
+      </div> */}
+
+
+      <div class="d-flex flex-nowrap">
+      <div style={{padding:"30px"}}>      
+        <img class="clinicImage" src={health}/>
+        <h1 className="imagetitle-clinic">Pet Health Checkup</h1>
+        <p className="imagedescription-clinic"> Get Your Pet Complete Health  <br></br>Checkup By Our Qualified Vets at  <br></br>Home..</p>
+
+        </div>
+        <div style={{padding:"30px"}}>      
+          <img class="clinicImage" src={vaccination}/>
+          <h1 className="imagetitle-clinic">Vaccination & Treatments</h1>
+          <p className="imagedescription-clinic"> We Offer at Home <br></br> Low Cost Pet Vaccination & <br></br> Treatments..</p>
+        </div>
+        <div style={{padding:"30px"}}>      
+          <img class="clinicImage" src={surgery}/>
+          <h1 className="imagetitle-clinic">Surgery Clinic</h1>
+          <p className="imagedescription-clinic"> We Offer Spay/Neuter and other <br/> Miner and Major Surgeries at Our <br></br> Clinic..</p>
+
+        </div>
+        <div style={{padding:"30px"}}>      
+          <img class="clinicImage" src={travel}/>
+          <h1 className="imagetitle-clinic">Pet Travel Documentations</h1>
+          <p className="imagedescription-clinic"> We Offer affordable <br></br> Pet Travel <br></br> documentation..</p>
+        </div>
+      </div>
+      
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">BLOG</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+      
+      <Blog/>
+      <Reviews/>
+
+      <div style={{ display: "flex", alignItems: "center" ,marginTop:40}}>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px" ,marginLeft:70}} />
+          <h1 className="heading-title-home">LATEST PRODUCTS</h1>
+        <div style={{ flex: 1, backgroundColor: "#c0c0c0", height: "2px",marginRight:60 }} />
+      </div>
+
+
+    {/* old products section */}
+    
+    {/* <h1>Featured Products</h1> */}
+      {/* <div className="products">
         {loading ? (
           <LoadingBox />
         ) : error ? (
@@ -95,7 +239,8 @@ function HomeScreen() {
             ))}
           </Row>
         )}
-      </div>
+      </div> */}
+      
     </div>
   );
 }
