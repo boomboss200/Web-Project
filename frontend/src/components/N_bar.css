@@ -1,0 +1,50 @@
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none;}
+	.navbar .nav-item:hover .nav-link{ color: #fff; }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}	
+.nav-wrapper{
+  background: #dd3333;
+  padding-left: 260px;
+  color: #fff;
+  width: 100%;
+  z-index: 30;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 0;
+  transition: background-color .3s, opacity .3s;
+  display: block;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-size:12;
+}
+.nav-bar{
+  background: #dd3333;
+  min-height: 43px;
+  z-index: 9;
+  position: relative;
+  font-weight: 400;
+  font-style: white;
+  font-family: "Lato", sans-serif;
+  font-size:90%;
+}
+#navbarScrollingDropdown{
+  color: white;
+  font-weight: 400;
+  font-size:100%;
+  position: relative;
+  min-height: 43px;
+  z-index: 9;
+}
+.container-fluid{
+  background: #dd3333;
+  min-height: 43px;
+  z-index: 9;
+  position: relative;
+  font-weight: 500;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size:90%;
+  
+}
