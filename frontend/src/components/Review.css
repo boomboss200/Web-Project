@@ -1,0 +1,18 @@
+.main-review {
+    color: white;
+    background-color: hsl(214, 32%, 39%);
+    padding-top: 1em;
+    position: relative;
+    width: 100%;
+}
+
+.review-title{
+    color: white;
+    font-style: italic;
+}
+
+.review-author{
+    color: white;
+    font-style:italic;
+    font-size: x-large;
+}

@@ -1,11 +1,11 @@
 const data = {
   products: [
     {
-      name: 'Nike Slim shirt',
-      slug: 'nike-slim-shirt',
+      name: 'Polo Slim shirt',
+      slug: 'polo-slim-shirt',
       category: 'Shirts',
       image: '/images/p1.jpg', // 679px × 829px
-      price: 120,
+      price: 200,
       countInStock: 10,
       brand: 'Nike',
       rating: 4.5,
