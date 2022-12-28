@@ -1,10 +1,10 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
 import axios from 'axios';
 import { useContext } from 'react';
 import { Store } from '../Store';
+import './product.css'
 
 function Product(props) {
   const { product } = props;
@@ -29,24 +29,35 @@ function Product(props) {
   };
 
   return (
-    <Card>
+    <Card className="card-home">
       <Link to={`/product/${product.slug}`}>
-        <img src={product.image} className="card-img-top" alt={product.name} />
+        <img src={product.image} className="img-card"  alt={product.name} />
       </Link>
+      <div className='card-body'>
       <Card.Body>
-        <Link to={`/product/${product.slug}`}>
-          <Card.Title>{product.name}</Card.Title>
+        <div>
+        <Card.Text className="product-category">{product.category}
+        </Card.Text>
+        </div>
+        <div>
+        <Link className="product-desc" to={`/product/${product.slug}`}>
+          <Card.Title className="product-desc">{product.name}</Card.Title>
         </Link>
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>${product.price}</Card.Text>
+        </div>
+        <div>
+        <Card.Text className="product-price">Rs{product.price}
+        </Card.Text>
+        </div>
         {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of stock
-          </Button>
+          <Button className="btn-card">
+            READ MORE
+          </Button >
         ) : (
-          <Button onClick={() => addToCartHandler(product)}>Add to cart</Button>
+          <Button className="btn-card" onClick={() => addToCartHandler(product)}>ADD TO CART</Button>
         )}
+
       </Card.Body>
+      </div>
     </Card>
   );
 }

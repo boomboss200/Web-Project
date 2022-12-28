@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import { useNavigate } from 'react-router-dom';
+import {FaSearch} from 'react-icons/fa'
+
 
 export default function SearchBox() {
   const navigate = useNavigate();
@@ -25,8 +27,9 @@ export default function SearchBox() {
           aria-label="Search Products"
           aria-describedby="button-search"
         ></FormControl>
-        <Button style={{marginLeft:590}} variant="inline-primary" type="submit" id="button-search">
+        <Button style={{marginLeft:600,height:38,backgroundColor:'#dd3333',color:'white'}} variant="inline-primary" type="submit" id="button-search">
           <i className="fas fa-search"></i>
+        <FaSearch/>
         </Button>
       </InputGroup>
     </Form>
