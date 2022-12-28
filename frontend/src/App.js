@@ -34,6 +34,13 @@ import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import MapScreen from './screens/MapScreen';
+import logo from './Assets/cart.png';
+import N_bar from './components/Navbar';
+import './App.css';
+import ShowCase from './components/ShowCase';
+import FilterScreen from './screens/FilterScreen';
+import Footer from './components/Footer';
+import {scrollbar} from 'react-custom-scrollbars'
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -75,20 +82,12 @@ function App() {
       >
         <ToastContainer position="bottom-center" limit={1} />
         <header>
-          <Navbar bg="whote" variant="white" expand="lg">
+          <div style={{backgroundColor: '#446084'}}><a style={{marginLeft: 850,  color: '#cad2d3',textDecoration: 'none', fontSize: 13}} href="">Our Stores</a><a class="vl" style={{marginLeft:20,  color: '#cad2d3',textDecoration: 'none', fontSize: 13}} href="">Blog</a><a class="vl" style={{marginLeft:12,  color: '#cad2d3',textDecoration: 'none', fontSize: 13}} href="">0309-9999066 / 0320-2881218</a></div>
+          <Navbar bg="white" variant="white" expand="lg">
             <Container>
-             
-             {/* categories button for revealing content slider  */}
-              {/* <Button
-                variant="white"
-                onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
-              >
-                <i className="fas fa-bars"></i>
-              </Button> */}
-
               <LinkContainer to="/">
               <nav class="navbar bg-light">
-              <div class="container" style={{marginLeft:60}}>
+              <div class="container" style={{marginLeft:100}}>
                <a class="navbar-brand" href="#">
               <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_158,h_91/https://www.petsmall.pk/wp-content/uploads/2022/08/WhatsApp-Image-2019-05-09-at-1.32.23-PM.jpeg" alt="PetsMall" width="130" height="100"/>
                </a>
@@ -100,7 +99,7 @@ function App() {
                 <SearchBox />
                 <Nav className="me-auto  w-100  justify-content-end">
                   <Link to="/cart" className="nav-link">
-                    Cart
+                    Cart <img style={{marginRight:12}} src={logo} alt="logo"/>
                     {cart.cartItems.length > 0 && (
                       <Badge pill bg="danger">
                         {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
@@ -125,7 +124,7 @@ function App() {
                       </Link>
                     </NavDropdown>
                   ): (
-                    <Link className="nav-link" to="/signin">
+                    <Link className="nav-link" to="/signin" style={{marginTop:13, marginRight:15}}>
                       Login In
                     </Link>
                   )}
@@ -148,8 +147,8 @@ function App() {
                 </Nav>
               </Navbar.Collapse>
             </Container>
-            
           </Navbar>
+          <N_bar/>
         </header>
        
        {/* category page content slider  */}
@@ -178,13 +177,18 @@ function App() {
         </div>
                 
         <main>
-          <Container className="mt-3">
+              
+          
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/search" element={<SearchScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
+             
+              <Route path="/shop" element={<ShowCase />} />
+              <Route path="/filter" element={<FilterScreen />} />
+
               <Route
                 path="/profile"
                 element={
@@ -275,11 +279,9 @@ function App() {
 
               <Route path="/" element={<HomeScreen />} />
             </Routes>
-          </Container>
+    
         </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
-        </footer>
+        <Footer/>
       </div>
     </BrowserRouter>
   );
