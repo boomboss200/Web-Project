@@ -9,7 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import LinkContainer from 'react-router-bootstrap/LinkContainer';
+import {BiArrowBack} from 'react-icons/bi'
 export default function CartScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -39,17 +40,30 @@ export default function CartScreen() {
   return (
     <div>
       <Helmet>
-        <title>Shopping Cart</title>
+        <title style={{textAlign:'center'}} >Shopping Cart</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
+     <h1 style={{fontSize:38,paddingTop:'2%'}}>
+      <span style={{color:'black',fontSize:38,paddingLeft:'10%',paddingRight:'2%'}}>SHOPPING CART</span>
+      >&nbsp;&nbsp;&nbsp;CHECKOUT DETAILS&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;ORDER COMPLETE
+    </h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
-            <MessageBox>
-              Cart is empty. <Link to="/">Go Shopping</Link>
-            </MessageBox>
+            // <MessageBox>
+            //   Cart is empty. <Link to="/">Go Shopping</Link>
+            // </MessageBox>
+           
+            <span >
+              <h3 style={{fontSize:22,textAlign:'center',paddingTop:'10%'}}> Your cart is currently empty.</h3>
+              <LinkContainer to={'/shop'} style={{textAlign:'center',alignItems:'center',alignContent:'center', width: "20%", height: "50px",marginLeft:'40%',fontWeight:'bold',fontSize:18,backgroundColor:' hsl(214, 32%, 39%)',color:'white'}}>
+              <Button style={{}} >RETURN TO SHOP</Button>
+              </LinkContainer>
+            </span>
           ) : (
-            <ListGroup>
+            <ListGroup style={{marginTop:'3%'}}>
+
+              {/* assing add the columns name for products item name , quanity and price to abdullah */}
+
               {cartItems.map((item) => (
                 <ListGroup.Item key={item._id}>
                   <Row className="align-items-center">
@@ -93,12 +107,16 @@ export default function CartScreen() {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+                
               ))}
+                <LinkContainer to={'/shop'} style={{textAlign:'center',alignItems:'center',alignContent:'center', width: "30%", height: "50px",marginLeft:'40%',marginTop:'3%',fontWeight:'bold',fontSize:18,backgroundColor:' hsl(214, 32%, 39%)',color:'white'}}>
+                 <Button> <BiArrowBack/> &nbsp;&nbsp;CONTINUE SHOPPING</Button>
+                </LinkContainer>
             </ListGroup>
           )}
         </Col>
         <Col md={4}>
-          <Card>
+          <Card style={{marginTop:'6%'}}>
             <Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
@@ -112,7 +130,8 @@ export default function CartScreen() {
                   <div className="d-grid">
                     <Button
                       type="button"
-                      variant="primary"
+                      style={{backgroundColor:'#dd3333'}}
+                      variant="danger"
                       onClick={checkoutHandler}
                       disabled={cartItems.length === 0}
                     >
